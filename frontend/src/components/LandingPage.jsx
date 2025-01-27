@@ -4,8 +4,22 @@ import { useGLTF, Stage, PresentationControls } from "@react-three/drei"
 import { styled } from '@mui/material';
 
 function Model(props) {
-    const { scene } = useGLTF("/tiny_isometric_room.glb")
-    return <primitive object={scene} position={[0, -160, 0]} {...props} />
+    const { scene, nodes, materials } = useGLTF("/tiny_isometric_room.glb")
+    console.log(useGLTF("/tiny_isometric_room.glb"));
+    console.log(nodes);
+    console.log(materials);
+    return (
+    <primitive object={scene} position={[0, -160, 0]} 
+    onPointerDown={(e) => {
+        if (e.object.name === 'laptop_lowpoly_equipment_material_0') {
+            console.log(e.object.name);
+        }
+        
+    }
+    }
+    
+    {...props} />
+    )
 }
 
 
